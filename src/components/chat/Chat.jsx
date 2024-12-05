@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
 
 const Chat = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
+
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behaviour: "smooth" });
+  }, []);
 
   const handleEmoji = (e) => {
     setText((prev) => prev + e.emoji);
@@ -29,45 +35,79 @@ const Chat = () => {
       </div>
       <div className="center">
         <div className="message">
-            <img src="./avatar.png" alt="" />
-            <div className="texts">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
         <div className="message own">
-            <div className="texts">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
         <div className="message">
-            <img src="./avatar.png" alt="" />
-            <div className="texts">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
         <div className="message own">
-            <div className="texts">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
         <div className="message">
-            <img src="./avatar.png" alt="" />
-            <div className="texts">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
         <div className="message own">
-            <div className="texts">
-                <img src="https://images.pexels.com/photos/29582939/pexels-photo-29582939/free-photo-of-morning-coffee-with-biscuits-in-cozy-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Example Image" />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere quidem mollitia magnam culpa. Officia obcaecati repudiandae ea voluptates error porro eligendi necessitatibus rerum quibusdam quae, tempora voluptatum unde vero.</p>
-                <span>1 min ago</span>
-            </div>
+          <div className="texts">
+            <img
+              src="https://images.pexels.com/photos/29582939/pexels-photo-29582939/free-photo-of-morning-coffee-with-biscuits-in-cozy-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Example Image"
+            />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex facere
+              quidem mollitia magnam culpa. Officia obcaecati repudiandae ea
+              voluptates error porro eligendi necessitatibus rerum quibusdam
+              quae, tempora voluptatum unde vero.
+            </p>
+            <span>1 min ago</span>
+          </div>
         </div>
+        <div ref={endRef}></div>
       </div>
       <div className="bottom">
         <div className="icons">
@@ -88,7 +128,7 @@ const Chat = () => {
             onClick={() => setOpen((prev) => !prev)}
           />
           <div className="picker">
-          <EmojiPicker open={open} onEmojiClick={handleEmoji} />
+            <EmojiPicker open={open} onEmojiClick={handleEmoji} />
           </div>
         </div>
         <button className="sendButton">Send</button>
