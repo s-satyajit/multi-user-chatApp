@@ -6,7 +6,7 @@ import Login from "./components/login/Login";
 import Notification from "./components/notification/Notification";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./lib/firebase";
-import { useUserStore } from "./lib/UserStore";
+import { useUserStore } from "./lib/userStore";
 
 function App() {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();

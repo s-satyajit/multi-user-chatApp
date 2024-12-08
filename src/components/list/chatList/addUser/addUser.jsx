@@ -1,7 +1,10 @@
+import "./addUser.css";
+import { db } from "../../../../lib/firebase";
 import {
   arrayUnion,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   serverTimestamp,
@@ -9,10 +12,8 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import React, { useState } from "react";
-import { db } from "../../../../lib/firebase";
-import "./addUser.css";
-import { useUserStore } from "../../../../lib/UserStore";
+import { useState } from "react";
+import { useUserStore } from "../../../../lib/userStore";
 
 const AddUser = () => {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ const AddUser = () => {
       const userRef = collection(db, "users");
 
       const q = query(userRef, where("username", "==", username));
+
       const querySnapShot = await getDocs(q);
 
       if (!querySnapShot.empty) {
@@ -67,8 +69,6 @@ const AddUser = () => {
           updatedAt: Date.now(),
         }),
       });
-
-      console.log(newChatRef.id);
     } catch (err) {
       console.log(err);
     }
