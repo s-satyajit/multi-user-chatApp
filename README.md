@@ -1,4 +1,5 @@
 # Multi-User Chat Application
+The Multi-User Chat Application lets multiple people chat with each other in real-time. Using the latest web technologies, this app provides a smooth and responsive chat experience, making it easy to stay connected
 
 ## Table of Contents
 
